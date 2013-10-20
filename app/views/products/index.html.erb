@@ -27,6 +27,16 @@
   </tbody>
 </table>
 
+
 <br>
+<%= render 'partial', :item =>  @products[0] %>
+
+<% if false %>
+<%= render 'partial', collection: @products[0], as: :item %>
+<%= render partial: 'partial', collection: @products[0], as: :item %>
+<%= @items = 'passed' %>
+<%= render 'partial', collection: @item, as: :item %>
+<% end %>
+
 
 <%= link_to 'New Product', new_product_path %>

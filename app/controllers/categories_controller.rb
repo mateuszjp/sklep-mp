@@ -55,9 +55,10 @@ class CategoriesController < ApplicationController
   # DELETE /categories/1
   # DELETE /categories/1.json
   def destroy
+    @items = @category.products
     @category.destroy
     respond_to do |format|
-      format.html { redirect_to categories_url, notice: "Kategoria usunieta wraz z PRODUKTAMI POWIAZANYMI"}#<strong>postami</strong>" }
+      format.html { redirect_to categories_url, notice: "Kategoria usunieta wraz z PRODUKTAMI POWIAZANYMI - usunieto produktow #{@items.count}" }#<strong>postami</strong>" }
       format.json { head :no_content }
     end
   end
