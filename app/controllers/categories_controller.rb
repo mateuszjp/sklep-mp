@@ -10,6 +10,7 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+    @category_products = @category.products
   end
 
   # GET /categories/new
@@ -56,7 +57,7 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy
     respond_to do |format|
-      format.html { redirect_to categories_url }
+      format.html { redirect_to categories_url, notice: "Kategoria usunieta wraz z PRODUKTAMI POWIAZANYMI"}#<strong>postami</strong>" }
       format.json { head :no_content }
     end
   end

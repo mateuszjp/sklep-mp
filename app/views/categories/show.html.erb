@@ -5,5 +5,39 @@
   <%= @category.name %>
 </p>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<div>
+  <% @category_products.each do |p| %>
+    <%=  %><br>
+  <% end %>
+
+</div>
+
+<table>
+  <thead>
+  <tr>
+    <th>Nr</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% i = 0 %>
+  <% @category_products.each do |product| %>
+      <% i += 1 %>
+      <tr>
+        <td><%= i %></td>
+        <td><%= link_to product.name, product_path(product) %></td>
+        <td><%= product.description %></td>
+        <td><%= product.price %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+<!--<%= link_to 'Back', categories_path %>-->

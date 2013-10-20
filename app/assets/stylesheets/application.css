@@ -11,3 +11,25 @@
  *= require_self
  *= require_tree .
  */
+
+div.main{
+    border: 1px solid #000000;
+    height: auto;
+    background-color: #cc0000;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+
+}
+div.cat_menu{
+    width: 200px;
+    float: left;
+    background-color: blanchedalmond;
+
+}
+
+div.content{
+    width: 600px;
+    float:left;
+    background-color: antiquewhite;
+}
