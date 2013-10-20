@@ -5,12 +5,12 @@
   <%= @category.name %>
 </p>
 
-<div>
-  <% @category_products.each do |p| %>
-    <%=  %><br>
-  <% end %>
+<!--<div style="border:1px">-->
+<%#@category_products.each do |p| %>
+<%#=  %><!--<br>-->
+<%# end %>
 
-</div>
+<!--</div>-->
 
 <table>
   <thead>
@@ -19,9 +19,9 @@
     <th>Name</th>
     <th>Description</th>
     <th>Price</th>
+<!--    <th></th>
     <th></th>
-    <th></th>
-    <th></th>
+    <th></th>-->
   </tr>
   </thead>
 
@@ -36,8 +36,13 @@
         <td><%= product.price %></td>
       </tr>
   <% end %>
+
   </tbody>
 </table>
+
+<% if @category_products.count == 0 %>
+    Brak Produktów
+<% end %>
 
 <br>
 <!--<%= link_to 'Back', categories_path %>-->
