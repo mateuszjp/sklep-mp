@@ -31,7 +31,9 @@
       <% i += 1 %>
       <tr>
         <td><%= i %></td>
-        <td><%= link_to product.name, product_path(product) %></td>
+        <td><%#= link_to product.name, product_path(product) %>
+          <%= link_to product.name, user_product_path(product) %>
+        </td>
         <td><%= product.description %></td>
         <td><%= product.price %></td>
       </tr>
@@ -45,4 +47,4 @@
 <% end %>
 
 <br>
-<%#= link_to 'Back', categories_path %>
+<!--<%= link_to 'Back', user_categories_path %>-->

@@ -12,14 +12,18 @@
 
     <div class="cat_menu">
         Kategorie<br><hr>
-        <%= link_to "Wszystkie produtky", products_path %><br><br>
+        <%= link_to "Wszystkie produtky", user_products_path %><br><br>
         <% @categories.each do |c| %>
-            <%= link_to c.name, category_path(c) %><br>
+            <%= link_to c.name, user_category_path(c) %><br>
         <% end %>
+        <br>
+        <%= link_to 'Dodaj kategorie', new_user_category_path %>
+        <%= link_to 'Kategorie', user_categories_path %>
     </div>
     <div class="content"><%= yield %></div>
+  <div style="background-color: aqua"><%= current_user.email %></div>
   <div style="background-color: aqua"><%= request.remote_ip %></div>
-  <div style="background-color: aqua"><%= link_to 'Log in', new_user_session_path  %></div>
+  <div style="background-color: aqua"><%= link_to 'Log out', destroy_user_session_path, method: :delete  %></div>
 </div>
 
 

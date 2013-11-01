@@ -1,7 +1,15 @@
 Sklep::Application.routes.draw do
-  resources :products
+  namespace :user do
+    resources :categories
+    resources :products
+    root to: 'categories#index'
+  end
+  devise_for :users #-> zmiana po refaktor
+  #devise_for :user
 
-  resources :categories
+  resources :products, only: [:index, :show]
+
+  resources :categories, only: [:show]
 
   root 'products#index'
 

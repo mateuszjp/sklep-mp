@@ -1,4 +1,4 @@
-class ProductsController < ApplicationController
+class User::ProductsController < UserController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
@@ -12,7 +12,6 @@ class ProductsController < ApplicationController
   def show
   end
 
-  #######################
   # GET /products/new
   def new
     @product = Product.new
@@ -29,7 +28,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.html { redirect_to user_product_path(@product), notice: 'Product was successfully created.' }
         format.json { render action: 'show', status: :created, location: @product }
       else
         format.html { render action: 'new' }
