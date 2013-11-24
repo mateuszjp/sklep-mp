@@ -1,5 +1,6 @@
 class User::ProductsController < UserController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :load_create_service, only: [:create]
 
   # GET /products
   # GET /products.json
@@ -24,10 +25,11 @@ class User::ProductsController < UserController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(product_params)
+    @product_create_service.process(product_params)
+    @product = @product_create_service.product
 
     respond_to do |format|
-      if @product.save
+      if @product_create_service.pass
         format.html { redirect_to user_product_path(@product), notice: 'Product was successfully created.' }
         format.json { render action: 'show', status: :created, location: @product }
       else
@@ -35,6 +37,17 @@ class User::ProductsController < UserController
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
+    #@product = Product.new(product_params)
+    #
+    #respond_to do |format|
+    #  if @product.save
+    #    format.html { redirect_to user_product_path(@product), notice: 'Product was successfully created.' }
+    #    format.json { render action: 'show', status: :created, location: @product }
+    #  else
+    #    format.html { render action: 'new' }
+    #    format.json { render json: @product.errors, status: :unprocessable_entity }
+    #  end
+    #end
   end
 
   # PATCH/PUT /products/1
@@ -70,5 +83,9 @@ class User::ProductsController < UserController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:name, :description, :price, :category_id)
+    end
+
+    def load_create_service(service = CreateProductService.new)
+      @product_create_service ||= service
     end
 end
